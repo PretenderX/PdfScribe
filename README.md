@@ -1,11 +1,11 @@
-# PdfScribe v1.0.7
+# PdfScribe v1.0.8
 
 PdfScribe is a PDF virtual printer. Check the [releases](https://github.com/stchan/PdfScribe/releases) page for this project to download a prebuilt MSI package.
 
 ## System Requirements
 
-* 64-bit Windows Vista or later
-* .NET Framework 4.0 or later
+* 64-bit Windows 7 or later
+* .NET Framework 4.6.1 or later
 
 ## Building from source
 
@@ -31,7 +31,12 @@ In the application config file (PdfScribe.exe.config), there are the following s
 * ****OpenAfterCreating**** - set value to *true* if you want the PDF automatically opened with the default viewer. This setting is ignored if the file extension is not .PDF
 * ****PrintPdfHookImpl**** - when implemented the `IPrintPdfHook` interface by referencing `PdfScribeAbstract.dll` and put your implementation dll to the installation path, set the value to be "`[your assembly name], [your class name]`", you can make the printer perform custom print behavior.
 
+## Known Issues
+* As of Windows 10 build 1903 (though this issue has been reported as early as build 1709), the bundled port monitor (Redmon 1.9) always runs as the SYSTEM user, so any dialog boxes (like for setting the filename) never appear on the user's desktop. Windows 7 does not appear to be affected. (See issue #17)
+
 ## Release notes
+#### v1.0.8
+* Fix for issue #26 (bug with filename containing unicode/utf8 letters)
 #### v1.0.7
 * Fix for issue #13 (Couldn't use environment variable in output filename).
 * Now defaults to use the print spooler rather than direct printing. (issue #14)
